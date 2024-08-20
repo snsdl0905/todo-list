@@ -1,0 +1,29 @@
+<form action="/todos/update/<%= todo._id %>" method="POST">
+    <div class="modal-container">
+        <div class="todo-add">
+            <h2>TODO EDIT</h2>
+            <input type="text" name="content" class="input-todo" value="<%= todo.content %>" required>
+            <div class="add-todo-top">
+                <input type="text" name="memo" class="input-memo" value="<%= todo.memo %>" placeholder="input memo">
+                <select name='status' class="select-categories">
+                    <option disabled hidden> select category</option>
+                    <option value="todo" <%= todo.status === 'todo' ? 'selected' : '' %>>To Do</option>
+                    <option value="doing" <%= todo.status === 'doing' ? 'selected' : '' %>>Doing</option>
+                    <option value="done" <%= todo.status === 'done' ? 'selected' : '' %>>Done</option>
+                </select>
+            </div>
+            <div class="button-box">
+                <button type="submit" class="button-edit" id="cancel-button">CANCEL</button>
+                <button type="submit" class="button-edit">SAVE</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+<script>
+    const cancelButton = document.getElementById('cancel-button');
+    cancelButton.addEventListener('click', function(event){
+        event.preventDefault();
+        window.location.href = '/todos';
+    })
+</script>

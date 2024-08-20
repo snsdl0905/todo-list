@@ -1,0 +1,23 @@
+<div class="modal-container">
+    <div class="todo-add">
+        <h2>TODO</h2>
+        <input type="text" name="content" class="input-todo" value="<%= todo.content %>" required>
+        <div class="add-todo-top">
+            <input type="text" name="memo" class="input-memo" value="<%= todo.memo %>" placeholder="input memo">
+            <select name='status' class="select-categories" disabled>
+                <option disabled hidden> select category</option>
+                <option value="todo" <%= todo.status === 'todo' ? 'selected' : '' %>>To Do</option>
+                <option value="doing" <%= todo.status === 'doing' ? 'selected' : '' %>>Doing</option>
+                <option value="done" <%= todo.status === 'done' ? 'selected' : '' %>>Done</option>
+            </select>
+        </div>
+        <button type="submit" class="button-add">CLOSE</button>
+    </div>
+</div>
+
+<script>
+    document.querySelector('button').addEventListener('click', function(event){
+    event.preventDefault();
+    window.location.href = '/todos';
+})
+</script>

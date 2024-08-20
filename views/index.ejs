@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>toDo</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <script defer src="/js/main.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>TO DO LIST</h1>
+        <section class="main-top">
+           <%- include('addForm.ejs') %>
+        </section>
+        <section class="main-bottom">
+            <div class="search-bar">
+                <div class="search-box">
+                    <input type="text" class="input-search" placeholder="Search note...">
+                    <div>
+                        <img src="/img/search.svg">
+                    </div>
+                </div>
+                <form action="/todos/filter" method="POST" id="category-form">
+                    <select name="category" class="choose-categories">
+                        <option value="All" selected>ALL</option>
+                        <option value="To Do">To Do</option>
+                        <option value="Doing">Doing</option>
+                        <option value="Done">Done</option>
+                    </select>
+                </form>
+            </div>
+            <div class="list-box">
+                <%- include('printList.ejs')%>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
+
+
+<!-- <script>
+    document.addEventListener('DOMContentLoaded', () => {
+    const categoryFilter = document.getElementById('category-filter');
+    const todoList = document.getElementById('todo-list');
+    const filteredList = [...todos];
+    
+    categoryFilter.addEventListener('change', (event) => {
+        const selectedCategory = event.target.value;
+        const todoItems = todoList.querySelectorAll('.todo-item');
+        if(selectedCategory !== 'all'){
+            filteredList = todos.filter((todo) => todo.status === selectedCategory);
+        }else{
+            filteredList = Todo.find();
+        }
+        res.render("/", {filteredList});
+    });
+});
+</script> -->
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+    const categoryFilter = document.getElementById('category-filter');
+    const todoList = document.getElementById('todo-list');
+    const filteredList = [...todos];
+
+    categoryFilter.addEventListener('change', () => {
+        document.getElementById('category-form').submit();
+    });
+});
+</script>
+

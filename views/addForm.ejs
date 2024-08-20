@@ -1,0 +1,16 @@
+<form action="/todos/add" method="POST">
+    <div class="todo-add">
+        <h2>NEW TODO</h2>
+        <input type="text" name="content" class="input-todo" placeholder="input your todo..." required>
+        <div class="add-todo-top">
+            <input type="text" name="memo" class="input-memo" placeholder="input memo">
+            <select name='status' class="select-categories">
+                <option disabled hidden selected> select category</option>
+                <option value="todo">To Do</option>
+                <option value="doing">Doing</option>
+                <option value="done">Done</option>
+            </select>
+        </div>
+        <button type="submit" class="button-add">ADD</button>
+    </div>
+</form>

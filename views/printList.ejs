@@ -1,0 +1,61 @@
+<ul>
+    <% todos.forEach((todo) => { %>
+        <li draggable="true">
+                <div class="todo-content-box">
+                    <div>
+                        <div class="img-container">
+                            <button class="img-box grab-button">
+                                <img src="/img/grab.png">
+                            </button>
+                            <button class="img-box check-btn">
+                                <img src="/img/unchecked.png">
+                            </button>
+                        </div>
+                        <a href="/todos/showDetail/<%= todo._id %>" type="submit" method="POST">
+                            <span class="todo-content"><%= todo.content %></span>
+                        </a>
+                    </div>
+                    <div class="img-container2">
+                       <form action="/todos/update/<%= todo._id %>" method="GET">
+                            <button class="img-box"  >
+                                <img src="/img/edit.svg">
+                            </button>
+                       </form>
+                       <form  action="/todos/delete/<%= todo._id %>?_method=DELETE" method="POST">
+                            <button class="img-box">
+                                <img src="/img/delete.svg">
+                            </button>
+                       </form>
+                    </div>
+                </div>
+        </li>
+    <% }); %>
+</ul>
+
+<script>
+    const checkButtons = document.querySelectorAll('.check-btn');
+    checkButtons.forEach((checkButton) => {
+        checkButton.addEventListener('click', () => {
+            const img = checkButton.querySelector('img');
+            const content = checkButton.closest('.todo-content-box').querySelector('.todo-content');
+        
+            if (img.src.includes('unchecked.png')) {
+                img.src = '/img/checked.png';
+                content.style.textDecoration = 'line-through';
+
+            } else {
+                img.src = '/img/unchecked.png';
+                content.style.textDecoration = 'none';
+            }
+        })
+    } )
+
+    // const todoList = document.getElementById('todo-list');
+    // let draggingItem = null;
+    // const grabButtons = document.querySelectorAll(".grab-button");
+    // grabButtons.forEach((grabButton) => {
+    //     const contentBox = grabButton.closest('.todo-content-box');
+
+    // })
+
+</script>
